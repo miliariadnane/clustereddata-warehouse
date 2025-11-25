@@ -1,0 +1,4 @@
+deal_unique_id,from_currency_iso,to_currency_iso,deal_timestamp,deal_amount
+FX-2024-0001,USD,EUR,2024-11-25T10:15:30Z,1250000.45
+FX-2024-0002,EUR,JPY,2024-11-25T11:20:00Z,250000.00
+FX-2024-0003,GBP,USD,2024-11-25T12:30:45Z,76000.99

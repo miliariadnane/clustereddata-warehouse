@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: fx_deals
+      POSTGRES_USER: fx_user
+      POSTGRES_PASSWORD: fx_pass
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_HOST_PORT:-5433}:5432"
+
+  app:
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/fx_deals
+      SPRING_DATASOURCE_USERNAME: fx_user
+      SPRING_DATASOURCE_PASSWORD: fx_pass
+    depends_on:
+      - postgres
+    ports:
+      - "${APP_HOST_PORT:-8080}:8080"
+
+volumes:
+  pg-data:
